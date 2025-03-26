@@ -19,11 +19,10 @@ while True:
         if recevMessage == 'quit':
             isContinue = False
             break
-        
-        replyMessage = input('Nhập tin nhắn: ')
 
-        connectionSocket.send(replyMessage.encode())  # Gửi kết quả lại client
-        #isContinue = input('Tiếp tục? (y/n): ') == 'y'
-    
-    connectionSocket.close()  # Đóng kết nối với client
+        replyMessage = recevMessage.upper()
+
+        connectionSocket.send(replyMessage.encode()) 
+
+    connectionSocket.close() 
     print('Đã đóng kết nối với:', addr)

@@ -13,9 +13,7 @@ while True:
     while isContinue:
         recevMessage, clientAddress = serverSocket.recvfrom(2048)  # Nhận dữ liệu từ client
         print('Client:', clientAddress, 'vừa gửi:', recevMessage.decode())
-        replyMessage = input('Nhập tin nhắn: ')
+        replyMessage = recevMessage.decode().upper()
 
         print('Server trả lời:', )  # Hiển thị kết quả
         serverSocket.sendto(replyMessage.encode(), clientAddress)  # Gửi kết quả về client
-
-        #isContinue = input('Tiếp tục? (y/n): ') == 'y'
