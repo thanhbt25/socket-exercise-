@@ -16,6 +16,10 @@ while True:
     while isContinue: # Lặp lại việc nhận và trả lời tin nhắn, khi không muốn kết nối với client này nữa thì đóng 
         recevMessage = connectionSocket.recv(1024).decode()  # Nhận dữ liệu từ client 
         print('Client:', addr, 'vừa gửi:', recevMessage)
+        if recevMessage == 'quit':
+            isContinue = False
+            break
+        
         replyMessage = input('Nhập tin nhắn: ')
 
         connectionSocket.send(replyMessage.encode())  # Gửi kết quả lại client
