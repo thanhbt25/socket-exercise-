@@ -10,11 +10,12 @@ isContinue = True
 
 while isContinue:
     message = input('Nhập tin nhắn:')  # Nhập câu từ bàn phím
+    if message == 'quit':
+        isContinue = False
+        break
     clientSocket.sendto(message.encode(), (serverName, serverPort))  # Gửi dữ liệu đến server
 
     modifiedMessage, serverAddress = clientSocket.recvfrom(2048)  # Nhận phản hồi từ server
     print(modifiedMessage.decode())  # Hiển thị phản hồi
-
-    #isContinue = input('Tiếp tục? (y/n): ') == 'y'
 
 clientSocket.close()  # Đóng kết nối

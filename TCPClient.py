@@ -9,11 +9,14 @@ clientSocket.connect((serverName, serverPort))  # Kết nối đến server
 isContinue = True
 
 while isContinue:
-    sentence = input('Nhập tin nhắn: ')  # Nhập dữ liệu từ bàn phím
-    clientSocket.send(sentence.encode())  # Gửi dữ liệu (chuyển thành bytes)
+    replyMessage = input('Nhập tin nhắn: ')  # Nhập dữ liệu từ bàn phím
+    if isContinue == 'quit':
+        isContinue = False
+        break
+    clientSocket.send(replyMessage.encode())  # Gửi dữ liệu (chuyển thành bytes)
 
-    modifiedSentence = clientSocket.recv(1024)  # Nhận phản hồi từ server
-    print('Từ server:', modifiedSentence.decode())  # In kết quả nhận được
+    recevMessage = clientSocket.recv(1024)  # Nhận phản hồi từ server
+    print('Từ server:', recevMessage.decode())  # In kết quả nhận được
 
     #isContinue = input('Tiếp tục? (y/n): ') == 'y'
 
