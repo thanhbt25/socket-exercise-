@@ -8,8 +8,14 @@ serverSocket.bind((serverIP, serverPort))  # Gán socket với cổng 12000
 print("Server sẵn sàng nhận kết nối")
 
 while True:
-    message, clientAddress = serverSocket.recvfrom(2048)  # Nhận dữ liệu từ client
-    capitalizedSentence = message.decode().upper()  # Chuyển thành chữ hoa
-    print('Client:', clientAddress, 'vừa gửi:', message.decode())
-    print('Server trả lại:', capitalizedSentence)  # Hiển thị kết quả
-    serverSocket.sendto(capitalizedSentence.encode(), clientAddress)  # Gửi kết quả về client
+    isContinue = True
+
+    while isContinue:
+        recevMessage, clientAddress = serverSocket.recvfrom(2048)  # Nhận dữ liệu từ client
+        print('Client:', clientAddress, 'vừa gửi:', recevMessage.decode())
+        replyMessage = input('Nhập tin nhắn: ')
+
+        print('Server trả lời:', )  # Hiển thị kết quả
+        serverSocket.sendto(replyMessage.encode(), clientAddress)  # Gửi kết quả về client
+
+        #isContinue = input('Tiếp tục? (y/n): ') == 'y'

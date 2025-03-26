@@ -6,10 +6,15 @@ serverPort = 12000  # Cổng server đang lắng nghe
 clientSocket = socket(AF_INET, SOCK_DGRAM)  # Tạo socket UDP
 clientSocket.connect((serverName, serverPort))  # Kết nối đến server
 
-message = input('Nhập câu chữ thường:')  # Nhập câu từ bàn phím
-clientSocket.sendto(message.encode(), (serverName, serverPort))  # Gửi dữ liệu đến server
+isContinue = True
 
-modifiedMessage, serverAddress = clientSocket.recvfrom(2048)  # Nhận phản hồi từ server
-print(modifiedMessage.decode())  # Hiển thị phản hồi
+while isContinue:
+    message = input('Nhập tin nhắn:')  # Nhập câu từ bàn phím
+    clientSocket.sendto(message.encode(), (serverName, serverPort))  # Gửi dữ liệu đến server
+
+    modifiedMessage, serverAddress = clientSocket.recvfrom(2048)  # Nhận phản hồi từ server
+    print(modifiedMessage.decode())  # Hiển thị phản hồi
+
+    #isContinue = input('Tiếp tục? (y/n): ') == 'y'
 
 clientSocket.close()  # Đóng kết nối
