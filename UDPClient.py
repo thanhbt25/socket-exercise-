@@ -1,11 +1,12 @@
 from socket import *
 
-serverName = 'localhost'  # Địa chỉ của server (có thể là IP hoặc tên miền)
+serverName = '192.168.0.169'  # Địa chỉ của server (có thể là IP hoặc tên miền)
 serverPort = 12000  # Cổng server đang lắng nghe
 
 clientSocket = socket(AF_INET, SOCK_DGRAM)  # Tạo socket UDP
+clientSocket.connect((serverName, serverPort))  # Kết nối đến server
 
-message = input('Input lowercase sentence:')  # Nhập câu từ bàn phím
+message = input('Nhập câu chữ thường:')  # Nhập câu từ bàn phím
 clientSocket.sendto(message.encode(), (serverName, serverPort))  # Gửi dữ liệu đến server
 
 modifiedMessage, serverAddress = clientSocket.recvfrom(2048)  # Nhận phản hồi từ server

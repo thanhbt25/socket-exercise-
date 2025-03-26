@@ -1,6 +1,6 @@
 from socket import *
 
-serverName = 'localhost'  # Địa chỉ server (localhost nghĩa là chạy trên cùng máy)
+serverName = '192.168.0.169'  # Địa chỉ IP của server
 serverPort = 12000  # Cổng server
 
 clientSocket = socket(AF_INET, SOCK_STREAM)  # Tạo socket TCP
