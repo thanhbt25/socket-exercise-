@@ -14,6 +14,5 @@ while True:
         recevMessage, clientAddress = serverSocket.recvfrom(2048)  # Nhận dữ liệu từ client
         print('Client:', clientAddress, 'vừa gửi:', recevMessage.decode())
         replyMessage = recevMessage.decode().upper()
-
-        print('Server trả lời:', )  # Hiển thị kết quả
+        
         serverSocket.sendto(replyMessage.encode(), clientAddress)  # Gửi kết quả về client
