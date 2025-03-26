@@ -10,9 +10,10 @@ isContinue = True
 
 while isContinue:
     replyMessage = input('Nhập tin nhắn: ')  # Nhập dữ liệu từ bàn phím
-    if isContinue == 'quit':
+    if replyMessage == 'quit':
         isContinue = False
         break
+
     clientSocket.send(replyMessage.encode())  # Gửi dữ liệu (chuyển thành bytes)
 
     recevMessage = clientSocket.recv(1024)  # Nhận phản hồi từ server
