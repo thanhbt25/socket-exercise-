@@ -1,6 +1,6 @@
 from socket import *
 
-serverName = 'localhost'  # Địa chỉ IP của server
+serverName = '10.10.103.232'  # Địa chỉ IP của server
 serverPort = 12000  # Cổng server
 
 clientSocket = socket(AF_INET, SOCK_STREAM)  # Tạo socket TCP
@@ -12,7 +12,7 @@ while isContinue:
     replyMessage = input('Nhập tin nhắn: ')  # Nhập dữ liệu từ bàn phím
 
     clientSocket.send(replyMessage.encode())  # Gửi dữ liệu (chuyển thành bytes)
-    
+
     if replyMessage == 'quit':
         isContinue = False
         break

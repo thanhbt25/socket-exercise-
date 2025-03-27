@@ -1,10 +1,9 @@
 from socket import *
 
-serverName = 'localhost'  # Địa chỉ của server (có thể là IP hoặc tên miền)
+serverName = '10.10.103.232'  # Địa chỉ của server (có thể là IP hoặc tên miền)
 serverPort = 12000  # Cổng server đang lắng nghe
 
 clientSocket = socket(AF_INET, SOCK_DGRAM)  # Tạo socket UDP
-clientSocket.connect((serverName, serverPort))  # Kết nối đến server
 
 isContinue = True
 
